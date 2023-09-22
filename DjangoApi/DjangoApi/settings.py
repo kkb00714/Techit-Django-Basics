@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL = True
+# 모든 도메인에 대해 요청을 받아 처리함
+
+# CORS_ORIGIN_WHITELIST = ()
+# 도메인을 특정해서 요청을 처리하기 위함
 
 # Application definition
 
@@ -39,6 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'rest_framework',
+    'corsheaders', # pipenv install django-cors-headers 추가
+    
+    'products.apps.productsConfig',
+    # products 라고 하는 디렉토리의 apps에서 ProductsConfig 파일을 불러온다는 의미
+    # 꼭 이런식으로 추가를 해야 적용이 됨
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -49,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
+    # middleware 에서도 관련된 설정들을 이렇게 추가해주어야 함
 ]
 
 ROOT_URLCONF = 'DjangoApi.urls'
@@ -88,6 +103,7 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
+        
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
