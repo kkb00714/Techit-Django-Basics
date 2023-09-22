@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders', # pipenv install django-cors-headers 추가
     
-    'products.apps.productsConfig',
+    'products.apps.ProductsConfig',
     # products 라고 하는 디렉토리의 apps에서 ProductsConfig 파일을 불러온다는 의미
     # 꼭 이런식으로 추가를 해야 적용이 됨
     
